@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #5d6d7e;
+    margin-bottom: 20px;
+  }
+  
+  center {
+    margin-top: 30px;
+  }
+  
+  /* Navbar/Dropdown Menu */
+  .btn-group {
+    position: absolute;
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    z-index: 100; /* Ensures it stays above other elements */
+}
+  
+  .dropdown-menu {
+    background-color: #264653;
+  }
+  
+  .dropdown-menu .dropdown-item {
+    color: white;
+  }
+  
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #2a9d8f;
+    color: white;
+  }
+  
+  /* Cards */
+  .card {
+    max-width: 600px; /* Limits the maximum width */
+    margin: 0 auto; /* Centers the card horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds subtle shadow for depth */
+    border-radius: 8px; /* Optional: Slight rounding of edges */
+}
+  
+  .card-header {
+    background-color: #2a9d8f;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 20px; /* Adjusts inner spacing */
+    font-size: 0.9rem; /* Keeps text compact */
+}
+  /* Buttons */
+  .btn-info {
+    background-color: #2a9d8f;
+    border: none;
+  }
+  
+  .btn-info:hover {
+    background-color: #21867a;
+  }
+  
+  .btn-secondary {
+    background-color: #264653;
+    border: none;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #1e3d46;
+  }
+  
+  /* Modal */
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    background-color: #264653;
+    color: white;
+  }
+  
+  .modal-footer {
+    border-top: none;
+  }
+  
+  .modal-body {
+    padding: 30px;
+  }
+  
+  /* Form Controls */
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: #2a9d8f;
+    box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #264653;
+    color: white;
+    margin-top: 20px;
+  }
+  
+  /* Floating animation */
+@keyframes float {
+  0% {
+      transform: translateY(0); /* Starting position */
+  }
+  50% {
+      transform: translateY(-10px); /* Move up */
+  }
+  100% {
+      transform: translateY(0); /* Return to starting position */
+  }
+}
+
+.logo {
+  animation: float 3s ease-in-out infinite; /* Apply the animation */
+  display: block;
+  margin: 20px auto;
+  width: 300px; /* Adjust as needed */
+  height: auto;
+  border-radius: 10px; /* Optional: rounded edges */
+}
+/* Floating animation */
+@keyframes float {
+  0% {
+      transform: translateY(0); /* Starting position */
+  }
+  50% {
+      transform: translateY(-10px); /* Move up */
+  }
+  100% {
+      transform: translateY(0); /* Return to starting position */
+  }
+}

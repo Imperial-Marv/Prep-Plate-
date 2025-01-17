@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prep & Plate</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}">
+</head> 
+<body style="background-color: #fdf8f5;">
+
+    <center>
+        <img src="{% static 'recipes/images/PrepAndPlate.jpg' %}" alt="Prep & Plate" class="logo">
+    </center>
+    
+<p></p>
+    <!-- Dropdown Menu -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="https://github.com/Imperial-Marv/Prep-Plate-" target="_blank" rel="noopener noreferrer">
+                Nosotros
+            </a>
+            <a class="dropdown-item" href="https://www.linkedin.com/in/marcelbrard/" target="_blank" rel="noopener noreferrer">
+                Contacto
+            </a>
+        </div>
+    </div>
+
+    <p></p>
+    
+    <center>
+        <!-- Modal with text of the product-->
+        <div class="card text-center">
+            <div class="card-header">
+                Nuestro servicio
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Creador de recetas Prep & Plate</h5>
+                <p class="card-text">
+                    Aprovecha nuestro creador de recetas ingresando tus ingredientes disponibles. Obtén sugerencias instantáneas para variar en la cocina de manera fácil y práctica.
+                    ¡Descubre nuevas posibilidades gastronómicas con nosotros!
+                </p>
+                <!-- Modal de producto -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#largeModal">
+                    Quiero mi receta
+                </button>
+            </div>
+        </div>
+    </center>
+
+    <center>
+        <!-- Modal de Funcion principal -->
+        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Mi contenido -->
+                       <img src="{% static 'recipes/images/PrepAndPlate.jpg' %}" alt="Prep & Plate" style="width: 300px; height: auto; display: block; margin: 0 auto; border-radius: 10px;">
+                        <p></p>
+                        <p>¿Qué ingredientes tienes?</p>
+                        <input class="form-control" type="text" placeholder="Ingrediente 1" id="ingredient1" required>
+                        <p></p>
+                        <input class="form-control" type="text" placeholder="Ingrediente 2" id="ingredient2" required>
+                        <p></p>
+                        <input class="form-control" type="text" placeholder="Ingrediente 3" id="ingredient3" required>
+                        <p></p>
+                        <button type="button" class="btn btn-info" onclick="generateRecipe()">Generar receta</button>
+                        <p></p>
+                        <h4>Receta sugerida:</h4>
+                        <p id="recipe-result"></p>
+                        <p id="recipe-link"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        function generateRecipe() {
+            var ingredient1 = document.getElementById("ingredient1").value.toLowerCase();
+            var ingredient2 = document.getElementById("ingredient2").value.toLowerCase();
+            var ingredient3 = document.getElementById("ingredient3").value.toLowerCase();
+
+            // Check if any of the input fields is empty
+            if (ingredient1 === "" || ingredient2 === "" || ingredient3 === "") {
+                alert("Por favor, complete todos los campos de ingredientes.");
+                return;
+            }
+
+            var recipes = [
+                { ingredients: ["pollo", "pasta", "tomate"], recipe: "Pollo a la bolognesa con pasta.", link: "https://example.com/pollo-bolognesa" },
+                { ingredients: ["palta", "pollo", "fideos"], recipe: "Fideos con pollo y palta.", link: "https://example.com/fideos-pollo-palta" },
+                { ingredients: ["zanahoria", "cebolla", "papa"], recipe: "Ensalada de zanahoria, cebolla y papa.", link: "https://example.com/ensalada-zanahoria-cebolla-papa" },
+                { ingredients: ["atún", "maíz", "lechuga"], recipe: "Ensalada de atún con maíz y lechuga.", link: "https://example.com/ensalada-atun-maiz-lechuga" },
+                { ingredients: ["arroz", "pollo", "brócoli"], recipe: "Arroz con pollo y brócoli.", link: "https://example.com/arroz-pollo-brocoli" },
+                { ingredients: ["queso", "tomate", "albahaca"], recipe: "Pizza de queso con tomate y albahaca.", link: "https://example.com/pizza-queso-tomate-albahaca" },
+                { ingredients: ["huevo", "espinacas", "queso"], recipe: "Omelette de espinacas y queso.", link: "https://example.com/omelette-espinacas-queso" },
+                { ingredients: ["salmón", "limón", "perejil"], recipe: "Salmón al horno con limón y perejil.", link: "https://example.com/salmon-horno-limon-perejil" },
+                { ingredients: ["frijoles", "tomate", "cebolla"], recipe: "Frijoles refritos con tomate y cebolla.", link: "https://example.com/frijoles-tomate-cebolla" },
+                { ingredients: ["pechuga de pollo", "limón", "ajo"], recipe: "Pechuga de pollo al limón con ajo.", link: "https://example.com/pechuga-pollo-limon-ajo" },
+                { ingredients: ["pasta", "salsa de tomate", "albahaca"], recipe: "Pasta con salsa de tomate y albahaca.", link: "https://example.com/pasta-salsa-tomate-albahaca" },
+                { ingredients: ["calabacín", "tomate", "queso"], recipe: "Calabacín al horno con tomate y queso.", link: "https://example.com/calabacin-horno-tomate-queso" },
+                { ingredients: ["garbanzos", "pepino", "pimiento"], recipe: "Ensalada de garbanzos con pepino y pimiento.", link: "https://example.com/ensalada-garbanzos-pepino-pimiento" },
+                { ingredients: ["camarones", "ajo", "limón"], recipe: "Camarones al ajillo con limón.", link: "https://example.com/camarones-ajillo-limon" },
+                { ingredients: ["papa", "cebolla", "aceite de oliva"], recipe: "Papas al horno con cebolla y aceite de oliva.", link: "https://example.com/papas-horno-cebolla-aceite-oliva" },
+                { ingredients: ["palta", "tomate", "cilantro"], recipe: "Guacamole con tomate y cilantro.", link: "https://example.com/guacamole-tomate-cilantro" },
+                { ingredients: ["pimientos", "cebolla", "judías verdes"], recipe: "Revuelto de pimientos, cebolla y judías verdes.", link: "https://example.com/revuelto-pimientos-cebolla-judias-verdes" },
+                { ingredients: ["pollo", "lima", "jengibre"], recipe: "Pollo a la parrilla con lima y jengibre.", link: "https://example.com/pollo-parrilla-lima-jengibre" },
+                { ingredients: ["espaguetis", "salsa de carne", "queso"], recipe: "Espaguetis con salsa de carne y queso.", link: "https://example.com/espaguetis-salsa-carne-queso" },
+                { ingredients: ["brócoli", "zanahoria", "soja"], recipe: "Salteado de brócoli, zanahoria y soja.", link: "https://example.com/salteado-brocoli-zanahoria-soja" },
+                // Add more recipes as needed
+            ];
+
+            var matchedRecipe = findMatchingRecipe([ingredient1, ingredient2, ingredient3], recipes);
+
+            if (matchedRecipe) {
+                document.getElementById("recipe-result").innerText = matchedRecipe.recipe;
+                document.getElementById("recipe-link").innerHTML = '<a href="' + matchedRecipe.link + '" target="_blank">Enlace a la receta completa</a>';
+            } else {
+                document.getElementById("recipe-result").innerText = "No se encontró una receta coincidente, revisar texto o ingresar nuevamente";
+                document.getElementById("recipe-link").innerHTML = "";
+            }
+        }
+
+        function findMatchingRecipe(userIngredients, recipes) {
+            for (var i = 0; i < recipes.length; i++) {
+                var recipeIngredients = recipes[i].ingredients.map(function (ingredient) {
+                    return ingredient.toLowerCase();
+                });
+                if (arraysEqual(userIngredients, recipeIngredients)) {
+                    return recipes[i];
+                }
+            }
+            return null;
+        }
+
+        function arraysEqual(arr1, arr2) {
+            if (arr1.length !== arr2.length) return false;
+            for (var i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
